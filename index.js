@@ -17,33 +17,33 @@ function playGame(playerChoice) {
   } else {
     switch (playerChoice) {
       case "rock":
-       result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE!";
+        result = computerChoice === "scissors" ? "YOU WIN!" : "YOU LOSE!";
         break;
       case "paper":
-        result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE!";
+        result = computerChoice === "rock" ? "YOU WIN!" : "YOU LOSE!";
         break;
       case "scissors":
-        result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE!";
+        result = computerChoice === "paper" ? "YOU WIN!" : "YOU LOSE!";
         break;
     }
+  }
+
+  resultDisplay.classList.remove("greenText", "redText");
+
+  switch (result) {
+    case "YOU WIN!":
+      resultDisplay.classList.add("greenText");
+      playerScore++;
+      playerScoreDisplay.textContent = playerScore;
+      break;
+    case "YOU LOSE!":
+      resultDisplay.classList.add("redText");
+      computerScore++;
+      computerScoreDisplay.textContent = computerScore;
+      break;
   }
 
   playerDisplay.textContent = `PLAYER: ${playerChoice}`;
   computerDisplay.textContent = `COMPUTER: ${computerChoice}`;
   resultDisplay.textContent = result;
-}
-
-resultDisplay.classList.remove("greenText", "redText")
-
-switch(result){
-    case "YOU WIN!":
-    resultDisplay.classList.add("greenText");
-    playerScore++;
-    playerScoreDisplay.textContent = playerScore;
-    break;
-    case "YOU LOOSE!":
-    resultDisplay.classList.add("redText");
-    computerScore++;
-    computerScoreDisplay.textContent = computerScore;
-    break;
 }
